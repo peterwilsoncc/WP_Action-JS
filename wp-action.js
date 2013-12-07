@@ -1,6 +1,7 @@
 (WP_Action = function( window, document ) {
-	var action_id = 1,
-		filter_id = 1;
+	var action_guid = 1,
+		wp_action_id = '__$$WP__action_id$$__',
+		actions = [];
 	
 	var has_action = function() {
 	}
