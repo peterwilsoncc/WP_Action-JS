@@ -1,6 +1,7 @@
 (WP_Action = function( window, document ) {
 	var action_guid = 1,
 		wp_action_id = '__$$WP__action_id$$__',
+		actions_count = {},
 		actions = {};
 	
 	var has_action = function( hook, callback ) {
@@ -91,6 +92,13 @@
 			i,
 			i_length;
 
+		if ( typeof actions_count[hook] != 'number' ) {
+			actions_count[hook] = 1;
+		}
+		else {
+			actions_count[hook]++;
+		}
+		
 		if ( typeof actions[hook] == 'undefined' ) {
 			// nothing to do
 			return;
