@@ -16,8 +16,8 @@ console.error = this.console.error || function(){};
 		body = html.getElementsByTagName('body')[0];
 
 
-	function test_function() {
-		console.log ( 'test_function running' );
+	function test_function( word ) {
+		console.log ( 'test_function running', word );
 	}
 	
 	WP_Action.add( 'test_hook', test_function );
