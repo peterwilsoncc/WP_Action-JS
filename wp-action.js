@@ -46,7 +46,7 @@
 		}
 		
 		var accepted_args = Array.prototype.slice.call(arguments),
-			hook = args_accepted.shift(),
+			hook = accepted_args.shift(),
 			_this = this,
 			priority,
 			i,
@@ -60,7 +60,7 @@
 		for ( priority = 0; priority < 100; priority++ ) {
 			if ( actions[hook][priority] ) {
 				for ( i = 0, i_length = actions[hook][priority].length; i<i_length; i++ ) {
-					actions[hook][priority][i].apply( _this, args_accepted );
+					actions[hook][priority][i].apply( _this, accepted_args );
 				}
 			}
 		}
