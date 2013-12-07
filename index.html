@@ -19,6 +19,10 @@ console.error = this.console.error || function(){};
 	function test_function() {
 		console.log ( 'test_function running' );
 	}
+	
+	WP_Action.add( 'test_hook', test_function );
+	
+	
 
 })(this, document);
 
