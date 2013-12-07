@@ -116,7 +116,13 @@
 	var do_action_ref_array = function(){
 	}
 
-	var did_action = function(){
+	var did_action = function( hook ){
+		if ( typeof actions_count[hook] != 'number' ) {
+			return 0;
+		}
+		else {
+			return actions_count[hook];
+		}
 	}
 
 	var remove_action = function(){
