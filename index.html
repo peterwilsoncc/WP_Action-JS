@@ -22,6 +22,8 @@ console.error = this.console.error || function(){};
 	
 	WP_Action.add( 'test_hook', test_function );
 	console.log ( 'added', test_function );
+
+	WP_Action.do( 'test_hook', 'kittens' );
 	
 
 })(this, document);
