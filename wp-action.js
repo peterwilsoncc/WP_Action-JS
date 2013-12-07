@@ -6,7 +6,7 @@
 	var has_action = function() {
 	}
 
-	var add_action = function( hook, callback, priority, accepted_args ){
+	var add_action = function( hook, callback, priority ){
 		if ( !hook || !callback ) {
 			return;
 		}
@@ -37,7 +37,7 @@
 			callback[wp_action_id] = action_guid++;
 		}
 		
-		actions[hook][priority].push( [callback, accepted_args] );
+		actions[hook][priority].push( callback );
 	}
 
 	var do_action = function(){
