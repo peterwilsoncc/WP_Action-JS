@@ -14,7 +14,11 @@ console.error = this.console.error || function(){};
 (PWCC.exe = function(window, document, $) {
 	var html = document.documentElement,
 		body = html.getElementsByTagName('body')[0];
-		
+
+
+	function test_function() {
+		console.log ( 'test_function running' );
+	}
 
 })(this, document);
 
