@@ -128,7 +128,17 @@
 	var remove_action = function(){
 	}
 
-	var remove_all_actions = function(){
+	var remove_all_actions = function( hook, priority ){
+		if ( !hook ) {
+			return;
+		}
+		
+		if ( !priority ) {
+			actions[hook] = [];
+		}
+		else if ( ( typeof priority == 'number' ) && ( typeof actions[hook] != 'undefined' ) ) {
+			actions[hook][priority] = [];
+		}
 	}
 		
 	return {
