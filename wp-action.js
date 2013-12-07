@@ -6,7 +6,38 @@
 	var has_action = function() {
 	}
 
-	var add_action = function(){
+	var add_action = function( hook, callback, priority, accepted_args ){
+		if ( !hook || !callback ) {
+			return;
+		}
+		
+		if ( !priority || ( typeof priority != "number" ) ) {
+			priority = 10;
+		}
+		else if ( Math.floor(priority) != priority ) {
+			priority = Math.floor(priority);
+		}
+		
+		if ( 0 > priority ) {
+			priority = 0;
+		}
+		else if ( 100 < priority ) {
+			priority = 100;
+		}
+		
+		if ( typeof actions[hook] == 'undefined' ) {
+			actions[hook] = [];
+		}
+		
+		if ( typeof actions[hook][priority] == 'undefined' ) {
+			actions[hook][priority] = [];
+		}
+		
+		if ( !callback[wp_action_id] ) {
+			callback[wp_action_id] = action_guid++;
+		}
+		
+		actions[hook][priority].push( [callback, accepted_args] );
 	}
 
 	var do_action = function(){
