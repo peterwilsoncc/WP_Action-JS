@@ -1,4 +1,4 @@
-(WP = function( window, document ) {
+(WP_Action = function( window, document ) {
 	var action_id = 1,
 		filter_id = 1;
 	
@@ -22,27 +22,17 @@
 
 	var remove_all_actions = function(){
 	}
+		
+	return {
+		has: has_action,
+		add: add_action,
+		do: do_action,
+		do_ref_array: do_action_ref_array,
+		did: did_action,
+		remove: remove_action,
+		remove_all: remove_all_actions
+	}
 	
-	var has_filter = function() {
-	}
-
-	var add_filter = function(){
-	}
-
-	var apply_filter = function(){
-	}
-
-	var apply_filter_ref_array = function(){
-	}
-
-	var current_filter = function(){
-	}
-
-	var remove_filter = function(){
-	}
-
-	var remove_all_filters = function(){
-	}
 
 }( this, document ));
 
