@@ -4,7 +4,7 @@
 		actions = [];
 	
 	var has_action = function( hook, callback ) {
-		if ( !hook || !callback ) {
+		if ( !hook && !callback ) {
 			return false;
 		}
 		
