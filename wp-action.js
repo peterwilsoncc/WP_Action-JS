@@ -41,6 +41,29 @@
 	}
 
 	var do_action = function(){
+		if ( arguments.length == 0 ) {
+				return;
+		}
+		
+		var accepted_args = Array.prototype.slice.call(arguments),
+			hook = args_accepted.shift(),
+			_this = this,
+			priority,
+			i,
+			i_length;
+
+		if ( typeof actions[hook] == 'undefined' ) {
+			// nothing to do
+			return;
+		}
+
+		for ( priority = 0; priority < 100; priority++ ) {
+			if ( actions[hook][priority] ) {
+				for ( i = 0, i_length = actions[hook][priority].length; i<i_length; i++ ) {
+					actions[hook][priority][i].apply( _this, args_accepted );
+				}
+			}
+		}
 	}
 
 	var do_action_ref_array = function(){
