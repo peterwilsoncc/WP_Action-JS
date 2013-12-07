@@ -27,7 +27,7 @@
 				}
 			}
 		}
-		else {
+		else if ( typeof callback[wp_action_id] == 'number' ) {
 			callback_guid = callback[wp_action_id];
 			
 			//checking against a specific function
