@@ -3,7 +3,46 @@
 		wp_action_id = '__$$WP__action_id$$__',
 		actions = [];
 	
-	var has_action = function() {
+	var has_action = function( hook, callback ) {
+		if ( !hook || !callback ) {
+			return false;
+		}
+		
+		var priority,
+			callback_guid,
+			i,
+			i_length;
+
+		if ( !callback ) {
+			// only checking if there is a hook
+			if ( typeof actions[hook] == 'undefined' ) {
+				//no hook, no actions
+				return false;
+			}
+			else {
+				for ( priority = 0; priority < 100; priority++ ) {
+					if ( ( actions[hook][priority] ) && ( 0 < actions[hook][priority].length ) ) {
+						return true;
+					}
+				}
+			}
+		}
+		else {
+			callback_guid = callback[wp_action_id];
+			
+			//checking against a specific function
+			for ( priority = 0; priority < 100; priority++ ) {
+				if ( actions[hook][priority] ) {
+					for ( i = 0, i_length = actions[hook][priority].length; i<i_length; i++ ) {
+						if ( actions[hook][priority][i][wp_action_id] == callback_guid ) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 
 	var add_action = function( hook, callback, priority ){
