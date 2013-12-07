@@ -28,6 +28,11 @@ console.error = this.console.error || function(){};
 
 	WP_Action.do( 'test_hook', 'kittens' );
 	
+	console.log ( 'has test_hook', WP_Action.has( 'test_hook' ) );
+	console.log ( 'has test_hook__non_exist', WP_Action.has( 'test_hook__non_exist' ) );
+	console.log ( 'has test_hook, test_function_two (unqueued)', WP_Action.has( 'test_hook', test_function_two ) );
+	console.log ( 'has test_hook, test_function (queued)', WP_Action.has( 'test_hook', test_function ) );
+	
 
 })(this, document);
 
