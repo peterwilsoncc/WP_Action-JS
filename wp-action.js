@@ -113,7 +113,10 @@
 		}
 	}
 
-	var do_action_ref_array = function(){
+	var do_action_ref_array = function( hook, accepted_args ){
+		accepted_args.unshift( hook );
+		
+		do_action.apply( this, accepted_args );
 	}
 
 	var did_action = function( hook ){
