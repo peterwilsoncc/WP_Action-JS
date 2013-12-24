@@ -27,6 +27,7 @@ console.error = this.console.error || function(){};
 	console.log ( 'added', test_function );
 
 	WP_Action.do( 'test_hook', 'kittens' );
+	WP_Action.do_ref_array ( 'test_hook', ['kittens'] );
 	
 	console.log ( 'has test_hook', WP_Action.has( 'test_hook' ) );
 	console.log ( 'has test_hook__non_exist', WP_Action.has( 'test_hook__non_exist' ) );
