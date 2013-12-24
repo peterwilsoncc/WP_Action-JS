@@ -39,6 +39,14 @@ console.error = this.console.error || function(){};
 	console.log ( 'did empty_hook', WP_Action.did( 'empty_hook' ) );
 	console.log ( 'did non_existant_hook', WP_Action.did( 'non_existant_hook' ) );
 	console.log ( 'did non_existant_hook', WP_Action.did( 'non_existant_hook' ) );
+	
+	WP_Action.remove_all( 'test_hook' );
+	console.log ( 'removed all test hook' );
+
+	WP_Action.do( 'test_hook', 'kittens' );
+	console.log ( 'did test_hook', WP_Action.did( 'test_hook' ) );
+	console.log ( 'did test_hook', WP_Action.did( 'test_hook' ) );
+
 
 })(this, document);
 
