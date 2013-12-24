@@ -128,7 +128,44 @@
 		}
 	}
 
-	var remove_action = function(){
+	var remove_action = function(  hook, callback, priority ){
+			if ( !hook || !callback ) {
+			return;
+		}
+		
+		if ( !priority || ( typeof priority != "number" ) ) {
+			priority = 10;
+		}
+		else if ( Math.floor(priority) != priority ) {
+			priority = Math.floor(priority);
+		}
+		
+		if ( 0 > priority ) {
+			priority = 0;
+		}
+		else if ( 100 < priority ) {
+			priority = 100;
+		}
+		
+		if ( typeof actions[hook] == 'undefined' ) {
+			return;
+		}
+		
+		if ( typeof actions[hook][priority] == 'undefined' ) {
+			return;
+		}
+		
+		if ( callback[wp_action_id] ) {
+			var i,
+				i_length;
+			for ( i = 0, i_length = actions[hook][priority].length; i<i_length; i++ ) {
+				if ( actions[hook][priority][i][wp_action_id] == callback[wp_action_id] ) {
+					actions[hook][priority][i] = function(){};
+					actions[hook][priority][i][wp_action_id] = 0;
+				}
+			}
+		}
+
 	}
 
 	var remove_all_actions = function( hook, priority ){
